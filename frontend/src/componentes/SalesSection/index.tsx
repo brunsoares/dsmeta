@@ -1,16 +1,38 @@
-import NotificationButton from '../buttonNotification'
-import './style.css'
+import NotificationButton from '../buttonNotification';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import './style.css';
+import { useState } from 'react';
 
 function SectionSales() {
+    const dataUmAnoAntes = new Date(new Date().setDate(new Date().getDate() - 365));
+    const dataAtual = new Date();
+
+    const [dataMinima, setDataMinima] = useState(dataUmAnoAntes);   // Constante com valor padrão de hoje
+    const [dataMaxima, setDataMaxima] = useState(dataAtual);
+
     return (
         <div className="dsmeta-card">
             <h2 className="dsmeta-sales-title">Vendas</h2>
             <div>
                 <div className="dsmeta-form-control-container">
-                    <input className="dsmeta-form-control" type="text" />
+                    <p className="dsmeta-paragrafo-left">Data Inicial</p>
+                    <DatePicker
+                        selected={dataMinima}
+                        onChange={(date: Date) => setDataMinima(date)}
+                        className="dsmeta-form-control"
+                        dateFormat="dd/MM/yyyy"
+                    />
+
                 </div>
                 <div className="dsmeta-form-control-container">
-                    <input className="dsmeta-form-control" type="text" />
+                    <p className="dsmeta-paragrafo-left">Data Final</p>
+                    <DatePicker
+                        selected={dataMaxima}
+                        onChange={(date: Date) => setDataMaxima(date)}
+                        className="dsmeta-form-control"
+                        dateFormat="dd/MM/yyyy"
+                    />
                 </div>
             </div>
 
@@ -75,4 +97,4 @@ function SectionSales() {
     )
 }
 
-export default SectionSales
+export default SectionSales;

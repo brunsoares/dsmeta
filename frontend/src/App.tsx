@@ -1,5 +1,5 @@
-import HeaderBanner from "./componentes/header"
-import SectionSales from "./componentes/SalesSection"
+import HeaderBanner from "./componentes/header";
+import SectionSales from "./componentes/SalesSection";
 
 function App() {
     return (
@@ -17,4 +17,4 @@ function App() {
     )
 }
 
-export default App
+export default App;

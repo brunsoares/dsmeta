@@ -1,5 +1,5 @@
-import BannerDesktop from "../../assets/images/logo-desktop.svg"
-import './style.css'
+import BannerDesktop from "../../assets/images/logo-desktop.svg";
+import './style.css';
 
 function HeaderApp() {
     return (
@@ -16,4 +16,4 @@ function HeaderApp() {
     )
 }
 
-export default HeaderApp
+export default HeaderApp;

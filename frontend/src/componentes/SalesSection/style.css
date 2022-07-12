@@ -26,6 +26,12 @@
   font-size: 18px;
 }
 
+.dsmeta-paragrafo-left{
+  color: #ffffff;
+  font-size: 17px;
+  margin: 25px 0;
+}
+
 .dsmeta-sales-table {
   width: 100%;
   border-spacing: 0;
