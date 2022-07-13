@@ -1,4 +1,4 @@
-package com.brunsoares.dsmeta;
+package main.java.com.brunsoares.dsmeta;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
