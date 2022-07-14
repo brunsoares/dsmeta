@@ -1,4 +1,4 @@
-package com.brunsoares.dsmeta.config;
+package com.brunsoares.dsmeta.configs;
 
 import java.util.Arrays;
 
