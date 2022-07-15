@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.time.format.DateTimeFormatter;
 
@@ -42,10 +43,10 @@ public class SmsService {
     }
 
     private String formatMessage(Sales sale){
-        //DecimalFormat df = new DecimalFormat("#,###.00");
+        DecimalFormat df = new DecimalFormat("#,###.00");
         StringBuilder message = new StringBuilder();
         message.append("Seller:     "+sale.getSellerName()+"\n");
-        message.append("Sale Value: R$"+sale.getAmount()+"\n");
+        message.append("Sale Value: R$"+df.format(BigDecimal.valueOf(sale.getAmount()))+"\n");
         message.append("Date:       "+sale.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         return message.toString();
     }
