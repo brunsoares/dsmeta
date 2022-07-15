@@ -1,7 +1,7 @@
 package com.brunsoares.dsmeta.services;
 
 import com.brunsoares.dsmeta.models.Sales;
-import com.brunsoares.dsmeta.repositorys.SaleRepository;
+import com.brunsoares.dsmeta.repositories.SaleRepository;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -45,18 +44,17 @@ public class SmsService {
     }
 
     private String formatMessage(Sales sale){
-        //DecimalFormat df = new DecimalFormat("#,###.00");
         StringBuilder message = new StringBuilder();
         message.append("Seller:     "+sale.getSellerName()+"\n");
-        //message.append("Sale Value: R$"+df.format(BigDecimal.valueOf(sale.getAmount()))+"\n");
-        message.append("Sale Value: R$"+formatAmount(BigDecimal.valueOf(sale.getAmount()))+"\n");
+        message.append("Sale Value: "+getCurrencyBRL(BigDecimal.valueOf(sale.getAmount()))+"\n");
         message.append("Date:       "+sale.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         return message.toString();
     }
 
-    private String formatAmount(BigDecimal valor) {
-        return NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(valor);
+    private String getCurrencyBRL(BigDecimal amount) {
+        return NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(amount);
     }
+
 }
 
 

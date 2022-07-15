@@ -1,7 +1,7 @@
 package com.brunsoares.dsmeta.services;
 
 import com.brunsoares.dsmeta.models.Sales;
-import com.brunsoares.dsmeta.repositorys.SaleRepository;
+import com.brunsoares.dsmeta.repositories.SaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

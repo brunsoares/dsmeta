@@ -1,4 +1,4 @@
-package com.brunsoares.dsmeta.repositorys;
+package com.brunsoares.dsmeta.repositories;
 
 import com.brunsoares.dsmeta.models.Sales;
 import org.springframework.data.domain.Page;
