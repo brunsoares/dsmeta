@@ -42,10 +42,10 @@ public class SmsService {
     }
 
     private String formatMessage(Sales sale){
-        DecimalFormat df = new DecimalFormat("#,###.00");
+        //DecimalFormat df = new DecimalFormat("#,###.00");
         StringBuilder message = new StringBuilder();
         message.append("Seller:     "+sale.getSellerName()+"\n");
-        message.append("Sale Value: R$"+df.format(sale.getAmount())+"\n");
+        message.append("Sale Value: R$"+sale.getAmount()+"\n");
         message.append("Date:       "+sale.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         return message.toString();
     }
