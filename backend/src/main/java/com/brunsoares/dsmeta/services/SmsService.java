@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 @Service
 public class SmsService {
@@ -43,12 +45,17 @@ public class SmsService {
     }
 
     private String formatMessage(Sales sale){
-        DecimalFormat df = new DecimalFormat("#,###.00");
+        //DecimalFormat df = new DecimalFormat("#,###.00");
         StringBuilder message = new StringBuilder();
         message.append("Seller:     "+sale.getSellerName()+"\n");
-        message.append("Sale Value: R$"+df.format(BigDecimal.valueOf(sale.getAmount()))+"\n");
+        //message.append("Sale Value: R$"+df.format(BigDecimal.valueOf(sale.getAmount()))+"\n");
+        message.append("Sale Value: R$"+formatAmount(BigDecimal.valueOf(sale.getAmount()))+"\n");
         message.append("Date:       "+sale.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         return message.toString();
+    }
+
+    private String formatAmount(BigDecimal valor) {
+        return NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(valor);
     }
 }
 
