@@ -18,11 +18,15 @@ function SectionSales() {
 
     // Usado juntamente com AXIOS
     useEffect(() => {
-        axios.get(`${BASE_URL}/sales`)
+
+        const dtMinima = dataMinima.toISOString().slice(0, 10);
+        const dtMaxima = dataMaxima.toISOString().slice(0, 10);
+
+        axios.get(`${BASE_URL}/sales?initialDate=${dtMinima}&finalDate=${dtMaxima}`)
              .then(response => {
                 setSales(response.data.content);
              });
-    }, []);
+    }, [dataMinima, dataMaxima]);   // UseEffect sempre executa após alterar as datas
 
     return (
         <div className="dsmeta-card">
