@@ -2,7 +2,8 @@ import NotificationButton from '../buttonNotification';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './style.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function SectionSales() {
     const dataUmAnoAntes = new Date(new Date().setDate(new Date().getDate() - 365));
@@ -10,6 +11,14 @@ function SectionSales() {
 
     const [dataMinima, setDataMinima] = useState(dataUmAnoAntes);   // Constante com valor padrão de hoje
     const [dataMaxima, setDataMaxima] = useState(dataAtual);
+
+    // Usado juntamente com AXIOS
+    useEffect(() => {
+        axios.get("http://localhost:8080/sales")
+             .then(response => {
+                console.log(response.data);
+             });
+    }, []);
 
     return (
         <div className="dsmeta-card">
